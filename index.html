@@ -5,10 +5,9 @@
     <title>tst</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script async type="text/javascript" src="//realtychatplatform.nikfort.ru/js/nf-chat-platform-widget.js"></script>
   </head>
   <body>
-    <button style="position: fixed; bottom: 40px; right: 40px; border-radius: 50%; background-color: orange;" onclick="openNfChatPlatformWidget()">Click</button>
+    <button style="position: fixed; bottom: 40px; right: 40px;" onclick="openNfChatPlatformWidget()">Click</button>
     <script>
       function openNfChatPlatformWidget() {
         const openNfChatPlatformWidgetEvent = new CustomEvent('openNfChatPlatformWidget');
