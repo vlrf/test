@@ -32,7 +32,9 @@ function parseQueryParams(query) {
 }
 
 function pasteData() {
-  document.getElementById("data").textContent = telegram.initDataUnsafe;
+  document.getElementById("data").textContent = JSON.stringify(
+    telegram.initDataUnsafe
+  );
 }
 
 function close() {
@@ -40,6 +42,7 @@ function close() {
 }
 
 function sendData() {
+  //Keyboard button.!!!!!!!!
   telegram.sendData(
     document.getElementById("dices").textContent ||
       "О нет! Я не совершил бросков кубика!.."
