@@ -6,9 +6,29 @@ pasteData();
 setMainButton();
 
 function sayHello() {
-  document.getElementById("hello").textContent += telegram.initData
-    ? ` ${telegram.initData}!`
+  const params = parseQueryParams(telegram.initData);
+  let userData = {};
+  if (params?.user) {
+    userData = JSON.parse(params.user);
+  }
+
+  document.getElementById("hello").textContent += userData.first_name
+    ? ` ${userData.first_name} ${userData.last_name}!`
     : " Незнакомец!";
+}
+
+function parseQueryParams(query) {
+  if (!query) {
+    return {};
+  }
+  return (/^[?#]/.test(query) ? query.slice(1) : query)
+    .split("&")
+    .reduce((params, param) => {
+      const key = param.substr(0, param.indexOf("="));
+      const value = param.substr(param.indexOf("=") + 1);
+      params[key] = value ? decodeURIComponent(value.replace(/\+/g, " ")) : "";
+      return params;
+    }, {});
 }
 
 function pasteData() {
