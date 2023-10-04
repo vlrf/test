@@ -2,9 +2,53 @@
 const telegram = window.Telegram.WebApp;
 
 sayHello();
+pasteData();
+setMainButton();
 
 function sayHello() {
   document.getElementById("hello").textContent += telegram.initData
     ? ` ${telegram.initData}!`
     : " Незнакомец!";
+}
+
+function pasteData() {
+  document.getElementById("data").textContent = telegram.initDataUnsafe;
+}
+
+function close() {
+  telegram.close();
+}
+
+function sendData() {
+  telegram.sendData(
+    document.getElementById("dices").textContent ||
+      "О нет! Я не совершил бросков кубика!.."
+  );
+}
+
+function setMainButton() {
+  telegram.MainButton.setText("Бросить кубик!");
+  telegram.MainButton.onClick(mainButtonClicked);
+}
+
+function toggleMainButtonVisibility() {
+  telegram.MainButton.isVisible
+    ? telegram.MainButton.hide()
+    : telegram.MainButton.show();
+}
+
+function toggleMainButtonActivity() {
+  telegram.MainButton.isActive
+    ? telegram.MainButton.disable()
+    : telegram.MainButton.enable();
+}
+
+function mainButtonClicked() {
+  document.getElementById("dices").textContent = `Результат броска: ${rollDN(
+    6
+  )}`;
+}
+
+function rollDN(dN) {
+  return Math.floor(Math.random() * dN) + 1;
 }
