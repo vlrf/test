@@ -2,18 +2,12 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <title>tst</title>
+    <title>Test telegram web app</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script async type="text/javascript" src="//realtychatplatform.nikfort.ru/js/nf-chat-platform-widget.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
-    <button style="position: fixed; bottom: 40px; right: 40px;" onclick="openNfChatPlatformWidget()">Click</button>
-    <script>
-      function openNfChatPlatformWidget() {
-        const openNfChatPlatformWidgetEvent = new CustomEvent('openNfChatPlatformWidget');
-        setTimeout(() => window.dispatchEvent(openNfChatPlatformWidgetEvent));
-      }
-    </script>
+    <div>Hello my friend</div>
   </body>
 </html>
