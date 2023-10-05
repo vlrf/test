@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+}
+
+#dice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 36px;
+  color: var(--tg-theme-button-text-color);
+  background-color: var(--tg-theme-button-color);
+  transition: 0.3s;
+}
+
+.dice_rotate {
+  transform: rotate(360deg);
+}
+
+#dice-input {
+  margin: 0;
+}
+
+button {
+  border: unset;
+  padding: 5px 10px;
+  background-color: var(--tg-theme-button-color);
+}
