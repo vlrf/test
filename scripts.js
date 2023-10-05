@@ -3,7 +3,6 @@ const telegram = window.Telegram.WebApp;
 
 sayHello();
 setMainButton();
-setStyles();
 
 function setMainButton() {
   telegram.MainButton.setText("Бросить кубик!");
@@ -82,6 +81,8 @@ function requestContactCallBack(isGranted) {
   );
 }
 
-function setStyles() {
-  telegram.themeParams;
+function showStyles() {
+  document.getElementById("styles").innerText = JSON.stringify(
+    telegram.themeParams
+  );
 }
