@@ -42,8 +42,10 @@ function rollDN(dN) {
 
 function rollDice() {
   const dN = document.getElementById("dice-input").value;
-  if (dN > 99999)
+  if (dN > 99999) {
     telegram.showAlert("Число граней не может быть больше 99 999");
+    return;
+  }
 
   const result = rollDN(dN || 6);
   const diceElement = document.getElementById("dice");
