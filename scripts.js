@@ -2,8 +2,14 @@
 const telegram = window.Telegram.WebApp;
 
 sayHello();
-pasteData();
 setMainButton();
+setStyles();
+
+function setMainButton() {
+  telegram.MainButton.setText("Бросить кубик!");
+  telegram.MainButton.onClick(rollDice);
+  telegram.MainButton.show();
+}
 
 function sayHello() {
   const params = parseQueryParams(telegram.initData);
@@ -31,47 +37,51 @@ function parseQueryParams(query) {
     }, {});
 }
 
-function pasteData() {
-  document.getElementById("data").textContent = JSON.stringify(
-    telegram.initDataUnsafe
-  );
-}
-
-function close() {
-  telegram.close();
-}
-
-function sendData() {
-  //Keyboard button.!!!!!!!!
-  telegram.sendData(
-    document.getElementById("dices").textContent ||
-      "О нет! Я не совершил бросков кубика!.."
-  );
-}
-
-function setMainButton() {
-  telegram.MainButton.setText("Бросить кубик!");
-  telegram.MainButton.onClick(mainButtonClicked);
-}
-
-function toggleMainButtonVisibility() {
-  telegram.MainButton.isVisible
-    ? telegram.MainButton.hide()
-    : telegram.MainButton.show();
-}
-
-function toggleMainButtonActivity() {
-  telegram.MainButton.isActive
-    ? telegram.MainButton.disable()
-    : telegram.MainButton.enable();
-}
-
-function mainButtonClicked() {
-  document.getElementById("dices").textContent = `Результат броска: ${rollDN(
-    6
-  )}`;
-}
-
 function rollDN(dN) {
   return Math.floor(Math.random() * dN) + 1;
+}
+
+function rollDice() {
+  const dN = document.getElementById("dice-input").value;
+  if (dN > 99999)
+    telegram.showAlert("Число граней не может быть больше 99 999");
+
+  const result = rollDN(dN || 6);
+  const diceElement = document.getElementById("dice");
+
+  diceElement.classList.contains("dice_rotate")
+    ? diceElement.classList.remove("dice_rotate")
+    : diceElement.classList.add("dice_rotate");
+
+  diceElement.innerText = result;
+}
+
+function downloadTxt() {
+  telegram.openLink("https://filesamples.com/samples/document/txt/sample1.txt");
+}
+
+function requestWriteAccess() {
+  telegram.requestWriteAccess(requestWriteAccessCallBack);
+}
+
+function requestWriteAccessCallBack(isGranted) {
+  telegram.showAlert(
+    isGranted ? "Вы предоставили доступ!" : "А может всё-таки дадите доступ?.."
+  );
+}
+
+function requestContact() {
+  telegram.requestContact(requestContactCallBack);
+}
+
+function requestContactCallBack(isGranted) {
+  telegram.showAlert(
+    isGranted
+      ? "Вы поделились номером телефона!"
+      : "Как жаль, что вы не поделились номером телефона :("
+  );
+}
+
+function setStyles() {
+  telegram.themeParams;
 }
