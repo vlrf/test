@@ -4,25 +4,19 @@
     <meta charset="utf-8" />
     <title>Test telegram web app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./style.css" rel="stylesheet" />
     <script defer src="https://telegram.org/js/telegram-web-app.js"></script>
     <script defer src="./scripts.js"></script>
   </head>
   <body>
-    <p id="hello">Привет,</p>
-    <a
-      href="https://filesamples.com/samples/document/txt/sample1.txt"
-      download=""
-      >Скачать txt</a
-    >
-    <button onclick="toggleMainButtonVisibility()">
-      Изменить видимость кнопки
-    </button>
-    <button onclick="toggleMainButtonActivity()">
-      Изменить доступность кнопки
-    </button>
-    <button onclick="close()">Закрыть</button>
-    <button onclick="sendData()">Отправить данные</button>
-    <div id="dices"></div>
-    <div id="data"></div>
+    <div class="wrapper">
+      <p id="hello">Приветствую,</p>
+      <input id="dice-input" type="number" placeholder="Введите число граней" />
+      <div id="dice">6</div>
+
+      <button onclick="downloadTxt()">Скачать TXT</button>
+      <button onclick="requestWriteAccess()">requestWriteAccess</button>
+      <button onclick="requestContact()">requestContact</button>
+    </div>
   </body>
 </html>
