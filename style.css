@@ -15,6 +15,7 @@
   width: 100px;
   height: 100px;
   font-size: 36px;
+  border-radius: 8px;
   color: var(--tg-theme-button-text-color);
   background-color: var(--tg-theme-button-color);
   transition: 0.3s;
@@ -31,5 +32,7 @@
 button {
   border: unset;
   padding: 5px 10px;
+  color: var(--tg-theme-button-text-color);
   background-color: var(--tg-theme-button-color);
+  border-radius: 8px;
 }
