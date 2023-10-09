@@ -11,15 +11,16 @@ function setMainButton() {
 }
 
 function sayHello() {
-  const params = parseQueryParams(telegram.initData);
-  let userData = {};
-  if (params?.user) {
-    userData = JSON.parse(params.user);
-  }
+  document.getElementById("hello").textContent = telegram.initData;
+  // const params = parseQueryParams(telegram.initData);
+  // let userData = {};
+  // if (params?.user) {
+  //   userData = JSON.parse(params.user);
+  // }
 
-  document.getElementById("hello").textContent += userData.first_name
-    ? ` ${userData.first_name} ${userData.last_name}!`
-    : " Незнакомец!";
+  // document.getElementById("hello").textContent += userData.first_name
+  //   ? ` ${userData.first_name} ${userData.last_name}!`
+  //   : " Незнакомец!";
 }
 
 function parseQueryParams(query) {
